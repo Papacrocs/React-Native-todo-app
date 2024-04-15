@@ -83,6 +83,7 @@ const TodoScreen = () => {
                 value={todo}
                 onChangeText={(userText) => setTodo(userText)}
             />
+
             {
                 editedTodo ? 
                 <TouchableOpacity
@@ -114,6 +115,7 @@ const TodoScreen = () => {
                     </Text>
                 </TouchableOpacity>
             }
+            
             {/* Render todo list */}
             <FlatList data={todoList} renderItem={renderTodos} />
             {/* Render fallback screen if todoList is empty */}
