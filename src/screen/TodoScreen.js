@@ -8,21 +8,9 @@ import {
 } from "react-native";
 import React, { useState } from "react";
 import { IconButton } from "react-native-paper";
+import FallBackScreen from "../components/FallBackScreen";
 
-const dummyData = [
-  {
-    id: "01",
-    title: "Wash car",
-  },
-  {
-    id: "02",
-    title: "Read your new book",
-  },
-  {
-    id: "03",
-    title: "Watch a movie",
-  },
-];
+
 const TodoScreen = () => {
     // Init local states
     const [todo, setTodo] = useState("")
@@ -51,6 +39,11 @@ const TodoScreen = () => {
           paddingVertical: 12,
           flexDirection: "row",
           alignItems: "center",
+          shadowColor:"#000",
+          shadowOffset:{width:0, height:2},
+          shadowOpacity:0.8,
+          shadowRadius:3,
+          
         }}
       >
         <Text style={{flex:1}}>{item.title}</Text>
@@ -68,6 +61,7 @@ const TodoScreen = () => {
           borderRadius: 6,
           paddingVertical: 15,
           paddingHorizontal: 16,
+          
         }}
         placeholder="Add a Task"
         value={todo}
@@ -90,6 +84,7 @@ const TodoScreen = () => {
 
       {/* Render todo list */}
       <FlatList data={todoList} renderItem={renderTodos} />
+      {todoList.length <= 0 && <FallBackScreen/>}
     </View>
   );
 };
